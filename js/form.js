@@ -58,7 +58,7 @@ $(function(){
         else {
             if ( $msgInput.val().length >= 3 ) {
                 nameFromInput = $msgInput.val();
-                $msgInput.val('');                              //Clear input
+                $msgInput.val('');
                 $msgInput.attr('placeholder', 'Whats your email?');
                 $this.data('clicked', 1);
 
