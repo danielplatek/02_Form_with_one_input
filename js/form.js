@@ -3,6 +3,9 @@ $(function(){
     var $msgInput      = $('#messageInput');
     var $errorMsg      = $('#errorMsg');
     var $nextButton    = $('#nextButton');
+    var $name          = $('#name');
+    var $email         = $('#email');
+    var $message       = $('#message');
     var mailFromInput;
     var nameFromInput;
     var messageFromInput;
@@ -38,10 +41,9 @@ $(function(){
         if ( $this.data('clicked') == 1 ) {
             mailFromInput = $msgInput.val();                       //Save data from input to mailFromInput
             $msgInput.val('');                                     //Clear input
+            $email.text('e-mail: ' + mailFromInput);               //Printe e-mail
             $msgInput.attr('placeholder', 'Whats your message?');  //Change placeholder
             $this.data('clicked', 2);                              //Set up data 'clicked' = 2
-
-            console.log('E-mail: ' + mailFromInput);
         }
 
         //Last step, retrieve the message and assign to the variable: messageFromInput and send email
@@ -49,8 +51,8 @@ $(function(){
             messageFromInput = $msgInput.val();
             $msgInput.hide();
             $nextButton.hide();
-            $errorMsg.text('WebsiteName, Thank you for your message.');
-            console.log('Message: ' + messageFromInput);
+            $message.text('Message: ' + messageFromInput);
+            $errorMsg.text('WebsiteName, Thank you ' + nameFromInput + ' for your message.');
             sendEmail();
         }
 
@@ -58,14 +60,14 @@ $(function(){
         else {
             if ( $msgInput.val().length >= 3 ) {
                 nameFromInput = $msgInput.val();
+                $errorMsg.text('');
                 $msgInput.val('');
+                $name.text('Name: ' + nameFromInput);
                 $msgInput.attr('placeholder', 'Whats your email?');
                 $this.data('clicked', 1);
 
-                console.log('Name: ' + nameFromInput);
-
             }else{
-                console.log('Please enter the correct name');
+                $errorMsg.text('Please enter the correct name');
             }
         }
     });
