@@ -39,21 +39,31 @@ $(function(){
 
         //Second step, check mail and assign to variable: mailFromInput
         if ( $this.data('clicked') == 1 ) {
-            mailFromInput = $msgInput.val();                       //Save data from input to mailFromInput
-            $msgInput.val('');                                     //Clear input
-            $email.text('e-mail: ' + mailFromInput);               //Printe e-mail
-            $msgInput.attr('placeholder', 'Whats your message?');  //Change placeholder
-            $this.data('clicked', 2);                              //Set up data 'clicked' = 2
+            if ( $msgInput.val().indexOf('@') != -1 && $msgInput.val().indexOf('.') != -1 ) {
+                mailFromInput = $msgInput.val();                       //Save data from input to mailFromInput
+                $errorMsg.text('');                                    //Clear text error
+                $msgInput.val('');                                     //Clear input
+                $email.text('e-mail: ' + mailFromInput);               //Printe e-mail
+                $msgInput.attr('placeholder', 'Whats your message?');  //Change placeholder
+                $this.data('clicked', 2);                              //Set up data 'clicked' = 2
+            }else {
+                $errorMsg.text('Please enter the correct e-mail.');
+            }
         }
 
         //Last step, retrieve the message and assign to the variable: messageFromInput and send email
         else if ( $this.data('clicked') == 2 ){
-            messageFromInput = $msgInput.val();
-            $msgInput.hide();
-            $nextButton.hide();
-            $message.text('Message: ' + messageFromInput);
-            $errorMsg.text('WebsiteName, Thank you ' + nameFromInput + ' for your message.');
-            sendEmail();
+            if ( $msgInput.val().length > 0 ) {
+                messageFromInput = $msgInput.val();
+                $errorMsg.text('');
+                $msgInput.hide();
+                $nextButton.hide();
+                $message.text('Message: ' + messageFromInput);
+                $errorMsg.text('WebsiteName, Thank you ' + nameFromInput + ' for your message.');
+                sendEmail();
+            }else {
+                $errorMsg.text('Please enter message');
+            }
         }
 
         // First step, name verification and assign to the variable: nameFromInput
@@ -67,7 +77,7 @@ $(function(){
                 $this.data('clicked', 1);
 
             }else{
-                $errorMsg.text('Please enter the correct name');
+                $errorMsg.text('Please enter the correct name. Min 3 characters.');
             }
         }
     });
