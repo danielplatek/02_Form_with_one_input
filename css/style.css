@@ -53,3 +53,34 @@
     font-weight: lighter;
     padding: 0 12px;
 }
+
+.progress-bar{
+    position: absolute;
+    top: 41px;
+    left: 14px;
+    width: 317px;
+    height: 1px;
+}
+
+.progress-bar > span {
+    position: relative;
+    top: -13px;
+    display: inline-block;
+    height: 1px;
+    width: 0%;
+    background-color: #FF9772;
+    border-radius: 8px 0 0 8px;
+    transition: all .2s ease-in;
+}
+
+.stepsFormNumber{
+    position: absolute;
+    top: 20px;
+    left: 298px;
+    background-color: transparent;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+    color: #8e8e8e;
+}
