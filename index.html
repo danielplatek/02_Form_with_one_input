@@ -8,8 +8,16 @@
 <body>
     <form id="form" method="post" action="">
         <div class="input-group">
-            <input id="messageInput" type="text" class="form-control" placeholder="Whats your name?" autocomplete="off" style="width:300px;">
+
+            <input id="messageInput" type="text" class="form-control" id="newsletter-last-name" placeholder="Whats your name?" autocomplete="off" style="width:300px;">
             <button id="nextButton" type="submit">next</button>
+            <div class="stepsFormNumber">
+                <span class="stepsFormNumber_current">1 of</span>
+                <span class="stepsFormNumber_total">3</span>
+            </div>
+            <div class="progress-bar">
+                <span></span>
+            </div>
             <p id="errorMsg"></p>
             <div class="inputValue">
                 <p id="name"></p>
